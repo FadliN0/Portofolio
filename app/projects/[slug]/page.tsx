@@ -187,7 +187,7 @@
                 🔍
             </motion.div>
             <h1 className="text-4xl font-bold text-white mb-4">Project Not Found</h1>
-            <p className="text-gray-400 mb-8">The project you're looking for doesn't exist.</p>
+            <p className="text-gray-400 mb-8">{"The project you're looking for doesn't exist."}</p>
             <div className="flex gap-4 justify-center">
                 <motion.button 
                 onClick={() => router.back()}

@@ -86,9 +86,8 @@ export default function Hero() {
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
             }`}>
-              Hi, I'm Fadli 👋<br/>
-              I transform ideas into reality through comprehensive mobile and web development 
-              — handling everything from intuitive frontend designs to reliable backend systems.
+              {"Hi, I'm Fadli 👋"}<br/>
+              {"I transform ideas into reality through comprehensive mobile and web development — handling everything from intuitive frontend designs to reliable backend systems."}
             </p>
           </div>
           

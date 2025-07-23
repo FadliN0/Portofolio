@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
-import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion';
-// import { useRouter } from 'next/router'; // untuk pages router
+import React, { useRef, useState } from 'react';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { useRouter } from 'next/navigation'; // untuk app router
 
 interface Project {

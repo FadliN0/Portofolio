@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 
@@ -396,7 +396,7 @@ const Contact: React.FC = () => {
                 whileInView={{ scale: [0.9, 1.02, 1] }}
                 transition={{ duration: 0.5 }}
               >
-                Let's{' '}
+                {"Let's"}{' '}
                 <motion.span
                   className="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 bg-clip-text text-transparent"
                   animate={{
@@ -414,7 +414,7 @@ const Contact: React.FC = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
               >
-                Ready to bring your ideas to life? Let's create something{' '}
+                Ready to bring your ideas to life? {"Let's"} create something{' '}
                 <motion.span
                   className="text-purple-300 font-semibold"
                   whileHover={{ scale: 1.05, color: "#c084fc" }}
@@ -439,7 +439,7 @@ const Contact: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
-              {['GitHub', 'LinkedIn', 'Twitter'].map((social, index) => (
+              {['GitHub', 'LinkedIn', 'Twitter'].map((social) => (
                 <motion.button
                   key={social}
                   className="w-12 h-12 bg-gradient-to-br from-purple-600/20 to-indigo-600/20 border border-purple-500/30 rounded-full flex items-center justify-center text-purple-300 hover:text-white backdrop-blur-sm"

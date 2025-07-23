@@ -69,7 +69,7 @@ const images = slugs.map(
     (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,
 );
 
-const SkillCard: React.FC<SkillCardProps> = ({ skill, index }) => {
+const SkillCard: React.FC<SkillCardProps> = ({ skill}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (

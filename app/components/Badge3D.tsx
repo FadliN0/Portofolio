@@ -68,12 +68,12 @@ export default function Badge3D({
 }
 
 function PortfolioBadge({ name, title }: PortfolioBadgeProps) {
-  const band = useRef<THREE.Mesh>(null)
-  const fixed = useRef<RapierRigidBody>(null)
-  const j1 = useRef<RapierRigidBody>(null)
-  const j2 = useRef<RapierRigidBody>(null)
-  const j3 = useRef<RapierRigidBody>(null)
-  const card = useRef<RapierRigidBody>(null)
+  const band = useRef<THREE.Mesh>(null!)
+  const fixed = useRef<RapierRigidBody>(null!)
+  const j1 = useRef<RapierRigidBody>(null!)
+  const j2 = useRef<RapierRigidBody>(null!)
+  const j3 = useRef<RapierRigidBody>(null!)
+  const card = useRef<RapierRigidBody>(null!)
 
   const vec = new THREE.Vector3()
   const ang = new THREE.Vector3()
@@ -121,10 +121,8 @@ function PortfolioBadge({ name, title }: PortfolioBadgeProps) {
 
   const material = useMemo(() => {
     return new MeshLineMaterial({
-      transparent: true,
       opacity: 0.8,
       color: new THREE.Color('#374151'),
-      depthTest: false,
       resolution: new THREE.Vector2(width, height),
       lineWidth: 3
     })
@@ -153,16 +151,15 @@ function PortfolioBadge({ name, title }: PortfolioBadgeProps) {
     curve.points[2].copy(j2.current.translation())
     curve.points[3].copy(j3.current.translation())
 
-    const g = band.current.geometry as any
+    const g = band.current.geometry as MeshLineGeometry
     if (g.setPoints) g.setPoints(curve.getPoints(100))
 
     ang.copy(card.current.angvel())
     rot.copy(card.current.rotation())
-    card.current.setAngvel({
-      x: ang.x,
-      y: ang.y - rot.y * 0.25,
-      z: ang.z
-    })
+    card.current.setAngvel(
+      { x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z },
+      true
+    )
   }
 })
 
@@ -195,17 +192,17 @@ function PortfolioBadge({ name, title }: PortfolioBadgeProps) {
             onPointerUp={(e) => {
               const target = e.target as Element
               if ('releasePointerCapture' in target) {
-                target.releasePointerCapture((e as any).pointerId)
+                (target as HTMLElement).releasePointerCapture((e as unknown as React.PointerEvent).pointerId)
               }
               drag(false)
             }}
             onPointerDown={(e) => {
               const target = e.target as Element
               if ('setPointerCapture' in target) {
-                target.setPointerCapture((e as any).pointerId)
+                (target as HTMLElement).setPointerCapture((e as unknown as React.PointerEvent).pointerId)
               }
               if (card.current) {
-                const point = (e as any).point as THREE.Vector3
+                const point = (e as unknown as React.PointerEvent & { point: THREE.Vector3 }).point
                 const translation = card.current.translation()
                 drag(new THREE.Vector3().copy(point).sub(vec.copy(translation)))
               }

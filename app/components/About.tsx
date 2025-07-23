@@ -50,7 +50,7 @@ export default function About() {
 
   useEffect(() => {
     // Generate particles only on client side (tidak bergantung pada scroll)
-    const particles = Array.from({ length: 4 }).map((_, index) => ({
+    const particles = Array.from({ length: 4 }).map(() => ({
       left: Math.random() * 100,
       top: Math.random() * 100,
       delay: Math.random() * 2
@@ -343,7 +343,7 @@ export default function About() {
                 <div className="absolute -inset-2 bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-blue-500/30 rounded-full opacity-50 blur group-hover:opacity-70 transition duration-1000"></div>
                 <button className="relative z-10 px-10 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-full shadow-2xl shadow-purple-500/20 hover:scale-110 hover:from-purple-600 hover:to-pink-600 transition-all duration-300 border border-white/10 backdrop-blur-sm group">
                   <span className="flex items-center gap-3">
-                    <span>Let's Create Something Amazing</span>
+                    <span>{"Let's Create Something Amazing"}</span>
                     <span className="text-xl group-hover:animate-bounce">🚀</span>
                   </span>
                 </button>
