@@ -7,6 +7,7 @@ import Skills from './components/Skills';
 import { useEffect } from 'react';
 
 
+
 const Contact = dynamic(() => import('./components/Contact'), { ssr: false });
 const Projects = dynamic(() => import('./components/Projects'), { ssr: false });
 

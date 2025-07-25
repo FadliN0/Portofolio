@@ -85,7 +85,7 @@ export default function About() {
     
     const timer = setTimeout(() => {
       setIsTyping(true);
-    }, 3000); // Start typing after name animation
+    }, 500); // Start typing after name animation
 
     return () => clearTimeout(timer);
   }, [isInView]);
@@ -211,17 +211,17 @@ export default function About() {
                   isInView ? 'scale-100 opacity-100 translate-y-0' : 'scale-75 opacity-0 translate-y-8'
                 }`}>
                   <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-blue-500/20 rounded-full opacity-50 blur-lg group-hover:opacity-70 transition duration-1000"></div>
-                  <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl shadow-purple-500/10 group-hover:scale-105 transition-transform duration-300">
+                  <div className="relative w-64 h-80 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-300">
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5"></div>
                     <Image
-                      src="/vercel.svg"
+                      src="/foto.png"
                       alt="Fadli Nofrizal"
                       fill
-                      className="rounded-full object-cover"
+                      className="rounded-full object-cover object-top scale-100 "
                     />
                     {/* Subtle rotating border effect */}
                     <div 
-                      className="absolute inset-0 rounded-full border border-transparent bg-gradient-to-r from-purple-400/30 via-pink-400/30 to-blue-400/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="absolute inset-0 rounded-full border border-transparent bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                       style={{
                         animation: 'spin 12s linear infinite'
                       }}

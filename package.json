@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev ",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -14,7 +14,7 @@
     "@heroicons/react": "^2.2.0",
     "@luma.gl/core": "^9.1.9",
     "@react-spring/three": "^10.0.1",
-    "@react-three/drei": "^10.5.1",
+    "@react-three/drei": "^10.5.2",
     "@react-three/fiber": "^9.2.0",
     "@react-three/rapier": "^2.1.0",
     "autoprefixer": "^10.4.21",

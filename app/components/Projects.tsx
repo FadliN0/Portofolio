@@ -267,32 +267,6 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
                   👀
                 </motion.span>
               </motion.button>
-
-              {/* Download Button */}
-              {project.hasDownload && (
-                <motion.a
-                  href={project.downloadLink}
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg font-medium text-sm transition-all duration-300 cursor-pointer relative z-30"
-                  whileHover={{ 
-                    scale: 1.05,
-                    boxShadow: "0 10px 25px -3px rgba(34, 197, 94, 0.5)",
-                    background: "linear-gradient(to right, #059669, #10b981)"
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 }}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <motion.span
-                    animate={{ y: [0, -2, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }}
-                  >
-                    📥
-                  </motion.span>
-                  <span>Download</span>
-                </motion.a>
-              )}
             </div>
           </motion.div>
         </div>

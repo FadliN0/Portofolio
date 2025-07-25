@@ -56,8 +56,11 @@ const ContactCard: React.FC<{ method: ContactMethod; index: number }> = ({ metho
     if (method.id === 'email') {
       window.location.href = `mailto:${method.value}`;
     } else if (method.id === 'phone') {
-      window.location.href = `tel:${method.value}`;
-    }
+    window.open(`https://wa.me/${method.value.replace(/\D/g, '')}`, '_blank');
+    } else if (method.id === 'location') {
+    const encodedLocation = encodeURIComponent(method.value);
+    window.open(`https://www.google.com/maps/search/?api=1&query=${encodedLocation}`, '_blank');
+  }
   };
 
   return (

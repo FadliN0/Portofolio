@@ -4,14 +4,14 @@ import { Suspense, useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import FuzzyText from './FuzzyText';
 
-// Dynamic import Badge3D untuk avoid SSR issues
-const Badge3D = dynamic(() => import('./Badge3D'), {
+// Dynamic import Lanyard untuk avoid SSR issues
+const Lanyard = dynamic(() => import('./Lanyard'), {
   ssr: false,
   loading: () => (
     <div className="w-full h-96 bg-gradient-to-br from-gray-100/10 to-gray-200/10 animate-pulse rounded-xl flex items-center justify-center border border-white/10 backdrop-blur-sm">
       <div className="flex flex-col items-center space-y-4">
         <div className="animate-spin w-8 h-8 border-2 border-purple-400 border-t-transparent rounded-full"></div>
-        <div className="text-gray-400 text-sm">Loading 3D Badge...</div>
+        <div className="text-gray-400 text-sm">Loading 3D Lanyard...</div>
       </div>
     </div>
   )
@@ -110,42 +110,30 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right - 3D Badge with slide and rotation */}
-        <div className={`relative transform transition-all duration-1200 ease-out ${
+        {/* RIGHT SIDE - LANYARD CONTAINER - FIXED */}
+        <div className={`relative transition-all duration-1000 ${
           animateElements.badge 
-            ? 'opacity-100 translate-x-0 rotate-0 scale-100' 
-            : 'opacity-0 translate-x-32 rotate-12 scale-90'
+            ? 'opacity-100 translate-x-0 rotate-0' 
+            : 'opacity-0 translate-x-20 rotate-12'
         }`}>
-          <Suspense fallback={
-            <div className="w-full h-96 bg-gradient-to-br from-gray-800/30 to-gray-900/30 rounded-xl flex items-center justify-center border border-white/10 backdrop-blur-sm">
-              <div className="animate-spin w-8 h-8 border-2 border-purple-400 border-t-transparent rounded-full"></div>
-            </div>
-          }>
-            <Badge3D 
-              name="Fadli Nofrizal"
-              title="Fullstack Developer"
-              className="rounded-xl overflow-hidden shadow-2xl"
-            />
-          </Suspense>
-          
-          {/* Floating elements with delayed animations */}
-          <div className={`absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full opacity-20 animate-pulse transition-all duration-1000 delay-500 ${
-            animateElements.decorations ? 'scale-100 opacity-20' : 'scale-0 opacity-0'
-          }`}></div>
-          <div className={`absolute -bottom-8 -left-8 w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full opacity-10 animate-pulse delay-1000 transition-all duration-1000 delay-700 ${
-            animateElements.decorations ? 'scale-100 opacity-10' : 'scale-0 opacity-0'
-          }`}></div>
-          
-          {/* Interactive tip with bounce animation */}
-          <div className={`absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-full max-w-sm transition-all duration-1000 delay-1000 ${
-            animateElements.decorations 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-0 translate-y-8'
-          }`}>
-            <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-lg p-4 text-center hover:bg-white/10 transition-all duration-300">
-              <p className="text-gray-300 text-sm">
-                🎮 Try dragging the badge above!
-              </p>
+          {/* Container dengan ukuran yang lebih besar dan padding yang cukup */}
+          <div className="relative w-full h-[700px] lg:h-[750px] overflow-visible">
+            <div className="absolute inset-0 translate-y-[-20px]">
+              <Suspense fallback={
+                <div className="w-full h-full bg-gradient-to-br from-gray-100/10 to-gray-200/10 animate-pulse rounded-xl flex items-center justify-center">
+                  <div className="flex flex-col items-center space-y-4">
+                    <div className="animate-spin w-8 h-8 border-2 border-purple-400 border-t-transparent rounded-full"></div>
+                    <div className="text-gray-400 text-sm">Loading 3D Lanyard...</div>
+                  </div>
+                </div>
+              }>
+                <Lanyard 
+                  position={[0, 0, 30]} 
+                  gravity={[0, -40, 0]} 
+                  transparent={true}
+                  fov={20}
+                />
+              </Suspense>
             </div>
           </div>
         </div>
