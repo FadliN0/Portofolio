@@ -129,7 +129,7 @@ function Band() {
 
   useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
   useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 0.5]);
   useSphericalJoint(j3, card, [[0, 0, 0], [0, 1.8, 0]]);
 
   useEffect(() => {
@@ -157,10 +157,18 @@ function Band() {
       body.lerped.lerp(body.translation(), delta * (5 + Math.max(0.05, Math.min(1, dist)) * 10));
     });
 
-    curve.points[0].copy(j3.current.translation());
-    curve.points[1].copy((j2.current as RapierRigidBody & { lerped: THREE.Vector3 }).lerped);
-    curve.points[2].copy((j1.current as RapierRigidBody & { lerped: THREE.Vector3 }).lerped);
-    curve.points[3].copy(fixed.current.translation());
+    if (
+      j1.current && j2.current && j3.current &&
+      (j1.current as any).lerped &&
+      (j2.current as any).lerped &&
+      fixed.current
+    ) {
+      curve.points[0].copy(j3.current.translation());
+      curve.points[1].copy((j2.current as any).lerped);
+      curve.points[2].copy((j1.current as any).lerped);
+      curve.points[3].copy(fixed.current.translation());
+    }
+
 
     if (band.current) {
       const updated = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(curve.points), 64, 0.1, 8, false);
@@ -168,6 +176,7 @@ function Band() {
       band.current.geometry = updated;
     }
 
+    if (!card.current) return;
     ang.copy(card.current.angvel());
     rot.copy(card.current.rotation());
     card.current.setAngvel(

@@ -10,7 +10,6 @@ const skillsRow1 = [
   { name: "React Native", icon: "📱", color: "#61DAFB", category: "Framework" },
   { name: "Next.js", icon: "▲", color: "#000000", category: "Framework" },
   { name: "TypeScript", icon: "📘", color: "#3178C6", category: "Language" },
-  { name: "Tailwind CSS", icon: "🎨", color: "#06B6D4", category: "Framework" },
   { name: "Three.js", icon: "🎯", color: "#000000", category: "Library" },
   { name: "JavaScript", icon: "🟨", color: "#F7DF1E", category: "Language" },
   { name: "HTML5", icon: "🌐", color: "#E34F26", category: "Language" },
@@ -81,7 +80,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill}) => {
       transition={{ type: "spring", stiffness: 400, damping: 25 }}
     >
       <motion.div
-        className="relative p-6 rounded-2xl bg-gradient-to-br from-black via-gray-900 to-purple-900/50 border border-purple-500/20 backdrop-blur-sm shadow-2xl overflow-hidden min-w-[200px]"
+        className="relative p-6 rounded-2xl bg-gradient-to-br from-black via-gray-900 to-purple-900/50 border border-purple-500/20 backdrop-blur-sm shadow-2xl overflow-hidden min-w-[160px] sm:min-w-[180px] md:min-w-[200px]"
         whileHover={{ 
           boxShadow: "0 25px 50px -12px rgba(147, 51, 234, 0.6)",
           borderColor: "rgba(147, 51, 234, 0.8)"
@@ -166,7 +165,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill}) => {
 
         {/* Skill Name */}
         <motion.h3
-          className="text-lg font-bold text-white text-center mb-2"
+          className="text-lg font-bold text-white text-center mb-2 truncate"
           whileHover={{ scale: 1.05, color: "#e2e8f0" }}
           transition={{ duration: 0.2 }}
         >
@@ -300,7 +299,7 @@ const Skills: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-6 py-20">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-20">
         <div className="max-w-7xl mx-auto">
           
           {/* Enhanced Header Section */}
@@ -313,7 +312,7 @@ const Skills: React.FC = () => {
           >
             {/* Icon Cloud */}
             <motion.div 
-              className="w-full md:w-[300px] h-[300px]"
+              className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px]"
               whileInView={{ scale: [0.8, 1] }}
               transition={{ duration: 1.2, delay: 0.2 }}
             >
@@ -334,7 +333,7 @@ const Skills: React.FC = () => {
               </motion.div>
 
               <motion.h2
-                className="text-5xl md:text-7xl font-bold leading-tight mb-6"
+                className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6"
                 whileInView={{ scale: [0.9, 1.02, 1] }}
                 transition={{ duration: 0.8 }}
               >

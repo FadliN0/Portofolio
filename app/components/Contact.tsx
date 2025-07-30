@@ -66,7 +66,7 @@ const ContactCard: React.FC<{ method: ContactMethod; index: number }> = ({ metho
   return (
     <motion.div
       ref={cardRef}
-      className="group relative cursor-pointer"
+      className="group relative cursor-pointer w-full max-w-md"
       initial={{ opacity: 0, x: -50 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
@@ -77,7 +77,7 @@ const ContactCard: React.FC<{ method: ContactMethod; index: number }> = ({ metho
       onClick={handleClick}
     >
       <motion.div
-        className="flex items-center space-x-4 p-6 rounded-xl bg-gradient-to-br from-black via-gray-900 to-purple-900/50 border border-purple-500/20 backdrop-blur-sm shadow-lg"
+        className="flex items-center space-x-4 p-6 rounded-xl bg-gradient-to-br from-black via-gray-900 to-purple-900/50 border border-purple-500/20 backdrop-blur-sm shadow-lg "
         style={{
           rotateX,
           rotateY,
@@ -370,8 +370,8 @@ const Contact: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-6 py-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-start max-w-7xl mx-auto">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-16 sm:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start max-w-7xl mx-auto">
           
           {/* Left Side - Header & Contact Methods */}
           <motion.div
@@ -395,7 +395,7 @@ const Contact: React.FC = () => {
               </motion.div>
               
               <motion.h2
-                className="text-5xl md:text-6xl font-bold leading-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
                 whileInView={{ scale: [0.9, 1.02, 1] }}
                 transition={{ duration: 0.5 }}
               >
@@ -469,7 +469,7 @@ const Contact: React.FC = () => {
             className="relative"
           >
             <motion.div
-              className="bg-gradient-to-br from-black/40 via-gray-900/40 to-purple-900/20 backdrop-blur-lg p-8 rounded-3xl border border-purple-500/20 shadow-2xl"
+              className="bg-gradient-to-br from-black/40 via-gray-900/40 to-purple-900/20 backdrop-blur-lg px-4 sm:px-6 py-8 rounded-3xl border border-purple-500/20 shadow-2xl"
               whileHover={{ 
                 boxShadow: "0 25px 50px -12px rgba(147, 51, 234, 0.4)"
               }}
@@ -539,7 +539,7 @@ const Contact: React.FC = () => {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-4 font-semibold rounded-lg shadow-lg disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden transition-all duration-300 ${
+                  className={`w-full py-4 text-sm sm:text-base font-semibold rounded-lg shadow-lg disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden transition-all duration-300 ${
                     submitStatus === 'success' 
                       ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white' 
                       : submitStatus === 'error'
