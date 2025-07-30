@@ -273,7 +273,7 @@ export default function About() {
                     ].map((tech, index) => (
                       <span
                         key={tech.name}
-                        className={`flex items-center justify-center px-4 py-2 text-sm ${tech.color} text-center backdrop-blur-lg rounded-full border font-medium transition-all duration-500 hover:scale-110 hover:bg-white/10`}
+                        className={`flex items-center justify-center px-3 py-2 text-sm ${tech.color} text-center backdrop-blur-lg rounded-full border font-medium transition-all duration-500 hover:scale-110 hover:bg-white/10`}
                         style={{
                           minWidth: '80px', // untuk jaga agar badge tidak terlalu kecil
                           transitionDelay: `${1200 + index * 150}ms`,
