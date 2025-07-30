@@ -167,7 +167,7 @@ export default function About() {
         }
       `}</style>
       
-      <section ref={aboutRef} id="about" className="relative min-h-screen py-20 overflow-hidden">
+      <section ref={aboutRef} id="about" className="relative min-h-screen py-10 sm:py-16 lg:py-20 overflow-hidden">
         {/* Subtle background - matching Hero style */}
         <div className="absolute inset-0">
           {/* Reduced opacity background elements */}
@@ -203,7 +203,7 @@ export default function About() {
         <div className="relative z-10 max-w-7xl mx-auto px-8">
           <div className={`transform transition-all duration-1000 delay-300 ${isInView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
             {/* Header */}
-            <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
               {/* FOTO PROFIL */}
               <div className="flex flex-col items-center justify-center text-center">
                 {/* Photo container with subtle effects */}
@@ -211,7 +211,7 @@ export default function About() {
                   isInView ? 'scale-100 opacity-100 translate-y-0' : 'scale-75 opacity-0 translate-y-8'
                 }`}>
                   <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-blue-500/20 rounded-full opacity-50 blur-lg group-hover:opacity-70 transition duration-1000"></div>
-                  <div className="relative w-64 h-80 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-300">
+                  <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-300">
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5"></div>
                     <Image
                       src="/foto.png"
@@ -264,7 +264,7 @@ export default function About() {
                     <span className="text-purple-400 font-medium text-lg">✨ Fullstack Developer</span>
                   </div>
                   
-                  <div className="flex justify-center mt-4 space-x-3">
+                  <div className="flex justify-center flex-wrap gap-3 mt-4">
                     {[
                       { name: 'React', color: 'bg-white/5 border-blue-400/30 text-blue-400' },
                       { name: 'Next.js', color: 'bg-white/5 border-gray-400/30 text-gray-300' },
@@ -294,7 +294,7 @@ export default function About() {
                 <div className={`relative mb-8 transition-all duration-1000 delay-700 ${
                   isInView ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
                 }`}>
-                  <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent relative">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent relative">
                     👋 About Me
                     <div className="absolute -top-2 -right-2 w-3 h-3 bg-blue-400/60 rounded-full animate-ping"></div>
                     <div className="absolute -top-1 -right-1 w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
