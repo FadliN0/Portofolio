@@ -14,6 +14,11 @@ import {
 } from "@react-three/rapier";
 import * as THREE from "three";
 
+// Extended type for RigidBody with lerped property
+interface LerpedRigidBody extends RapierRigidBody {
+  lerped?: THREE.Vector3;
+}
+
 function Card() {
   const photoUrl = "/foto.png";
   const name = "Fadli Nofrizal";
@@ -151,7 +156,7 @@ function Band() {
 
     [j1, j2].forEach(ref => {
       if (!ref.current) return;
-      const body = ref.current as RapierRigidBody & { lerped?: THREE.Vector3 };
+      const body = ref.current as LerpedRigidBody;
       body.lerped ??= new THREE.Vector3().copy(body.translation());
       const dist = body.lerped.distanceTo(body.translation());
       body.lerped.lerp(body.translation(), delta * (5 + Math.max(0.05, Math.min(1, dist)) * 10));
@@ -159,16 +164,15 @@ function Band() {
 
     if (
       j1.current && j2.current && j3.current &&
-      (j1.current as any).lerped &&
-      (j2.current as any).lerped &&
+      (j1.current as LerpedRigidBody).lerped &&
+      (j2.current as LerpedRigidBody).lerped &&
       fixed.current
     ) {
       curve.points[0].copy(j3.current.translation());
-      curve.points[1].copy((j2.current as any).lerped);
-      curve.points[2].copy((j1.current as any).lerped);
+      curve.points[1].copy((j2.current as LerpedRigidBody).lerped!);
+      curve.points[2].copy((j1.current as LerpedRigidBody).lerped!);
       curve.points[3].copy(fixed.current.translation());
     }
-
 
     if (band.current) {
       const updated = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(curve.points), 64, 0.1, 8, false);
@@ -180,20 +184,20 @@ function Band() {
     ang.copy(card.current.angvel());
     rot.copy(card.current.rotation());
     card.current.setAngvel(
-  new THREE.Vector3(ang.x, ang.y - rot.y * 0.25, ang.z),
-  true
-);
-});
+      new THREE.Vector3(ang.x, ang.y - rot.y * 0.25, ang.z),
+      true
+    );
+  });
 
   const handlePointerDown = (e: ThreeEvent<PointerEvent>) => {
     const target = e.target as Element | null;
-  target?.setPointerCapture(e.pointerId);
+    target?.setPointerCapture(e.pointerId);
     setDragged(new THREE.Vector3().copy(e.point).sub(card.current.translation()));
   };
 
   const handlePointerUp = (e: ThreeEvent<PointerEvent>) => {
     const target = e.target as Element | null;
-  target?.setPointerCapture(e.pointerId);
+    target?.releasePointerCapture(e.pointerId);
     setDragged(false);
   };
 
