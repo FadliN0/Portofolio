@@ -55,11 +55,39 @@ export default function Hero() {
     <section className="relative px-8 py-16 min-h-screen flex items-center overflow-hidden">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center w-full">
         
-        {/* Left Content */}
-        <div className="space-y-8">
+        {/* LANYARD CONTAINER - Kiri di mobile, kanan di desktop */}
+        <div className={`relative transition-all duration-1000 order-1 lg:order-2 ${
+          animateElements.badge 
+            ? 'opacity-100 translate-x-0 rotate-0' 
+            : 'opacity-0 translate-x-20 rotate-12'
+        }`}>
+          {/* Container dengan ukuran yang lebih besar dan padding yang cukup */}
+          <div className="relative w-full h-[500px] lg:h-[700px] xl:h-[750px] overflow-visible">
+            <div className="absolute inset-0 translate-y-[-20px]">
+              <Suspense fallback={
+                <div className="w-full h-full bg-gradient-to-br from-gray-100/10 to-gray-200/10 animate-pulse rounded-xl flex items-center justify-center">
+                  <div className="flex flex-col items-center space-y-4">
+                    <div className="animate-spin w-8 h-8 border-2 border-purple-400 border-t-transparent rounded-full"></div>
+                    <div className="text-gray-400 text-sm">Loading 3D Lanyard...</div>
+                  </div>
+                </div>
+              }>
+                <Lanyard 
+                  position={[0, 0, 30]} 
+                  gravity={[0, -40, 0]} 
+                  transparent={true}
+                  fov={20}
+                />
+              </Suspense>
+            </div>
+          </div>
+        </div>
+
+        {/* CONTENT - Kanan di mobile, kiri di desktop */}
+        <div className="space-y-8 order-2 lg:order-1">
           <div className="space-y-4">
             {/* Title with slide-in animation */}
-            <h1 className={`text-5xl lg:text-7xl font-bold text-white leading-tight -ml-16 transition-all duration-1000 ${
+            <h1 className={`text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight lg:-ml-16 transition-all duration-1000 ${
               animateElements.title 
                 ? 'opacity-100 translate-x-0 translate-y-0' 
                 : 'opacity-0 -translate-x-20 translate-y-10'
@@ -81,7 +109,7 @@ export default function Hero() {
             </h1>
             
             {/* Description with fade-in */}
-            <p className={`text-xl text-gray-300 leading-relaxed transition-all duration-1000 ${
+            <p className={`text-lg sm:text-xl text-gray-300 leading-relaxed transition-all duration-1000 ${
               animateElements.description 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
@@ -97,44 +125,16 @@ export default function Hero() {
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-16'
           }`}>
-            <button className={`px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 ${
+            <button className={`px-6 sm:px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 ${
               animateElements.buttons ? 'animate-bounce-once' : ''
             }`}>
               View My Work
             </button>
-            <button className={`px-8 py-3 border-2 border-purple-400 text-purple-400 rounded-lg font-semibold hover:bg-purple-400 hover:text-white transition-all transform transition-all duration-700 delay-200 ${
+            <button className={`px-6 sm:px-8 py-3 border-2 border-purple-400 text-purple-400 rounded-lg font-semibold hover:bg-purple-400 hover:text-white transition-all transform transition-all duration-700 delay-200 ${
               animateElements.buttons ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
             }`}>
               Get In Touch
             </button>
-          </div>
-        </div>
-
-        {/* RIGHT SIDE - LANYARD CONTAINER - FIXED */}
-        <div className={`relative transition-all duration-1000 ${
-          animateElements.badge 
-            ? 'opacity-100 translate-x-0 rotate-0' 
-            : 'opacity-0 translate-x-20 rotate-12'
-        }`}>
-          {/* Container dengan ukuran yang lebih besar dan padding yang cukup */}
-          <div className="relative w-full h-[700px] lg:h-[750px] overflow-visible">
-            <div className="absolute inset-0 translate-y-[-20px]">
-              <Suspense fallback={
-                <div className="w-full h-full bg-gradient-to-br from-gray-100/10 to-gray-200/10 animate-pulse rounded-xl flex items-center justify-center">
-                  <div className="flex flex-col items-center space-y-4">
-                    <div className="animate-spin w-8 h-8 border-2 border-purple-400 border-t-transparent rounded-full"></div>
-                    <div className="text-gray-400 text-sm">Loading 3D Lanyard...</div>
-                  </div>
-                </div>
-              }>
-                <Lanyard 
-                  position={[0, 0, 30]} 
-                  gravity={[0, -40, 0]} 
-                  transparent={true}
-                  fov={20}
-                />
-              </Suspense>
-            </div>
           </div>
         </div>
       </div>
