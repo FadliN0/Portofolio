@@ -36,18 +36,16 @@
         features: [
         'Search movies by title with auto-complete suggestions',
         'View detailed movie information including cast and crew',
-        'Save favorite movies locally with persistent storage',
         'Beautiful animations and smooth transitions',
-        'Dark/Light theme support with system preference detection',
-        'Offline mode with cached data for previously viewed movies',
         'Share movie information to social media',
         'Rate and review movies with personal notes'
         ],
         screenshots: [
-        '/screenshots/movie-app-1.jpg',
-        '/screenshots/movie-app-2.jpg',
-        '/screenshots/movie-app-3.jpg',
-        '/screenshots/movie-app-4.jpg'
+        '/cinevault/loadingcine.png',
+        '/cinevault/homescreen.png',
+        '/cinevault/carifilm.png',
+        '/cinevault/detailfilm.png',
+        '/cinevault/errorhandling.png'
         ],
         downloadLink: '/CineVault.apk',
         githubLink: 'https://github.com/FadliN0/UAS_CineVault',
@@ -392,7 +390,13 @@
                         setSelectedImage(index);
                         setIsImageModalOpen(true);
                     }}
-                    >
+                     style={{
+            backgroundImage: `url(${screenshot})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+        }}
+        >
+                    
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-indigo-600/20 flex items-center justify-center">
                         <motion.div
                         className="text-6xl opacity-30"
@@ -595,73 +599,80 @@
         </div>
 
         {/* Image Modal */}
-        <AnimatePresence>
-            {isImageModalOpen && (
-            <motion.div
-                className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setIsImageModalOpen(false)}
+        // Image Modal - Bagian yang perlu diperbaiki
+<AnimatePresence>
+  {isImageModalOpen && (
+    <motion.div
+      className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setIsImageModalOpen(false)}
+    >
+      <motion.div
+        className="relative max-w-4xl w-full max-h-[90vh] bg-gradient-to-br from-purple-800/30 to-indigo-900/30 rounded-2xl overflow-hidden"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Gambar Asli */}
+        <img
+          src={project.screenshots[selectedImage]}
+          alt={`${project.title} screenshot ${selectedImage + 1}`}
+          className="w-full h-full object-contain"
+          style={{ maxHeight: '80vh' }}
+        />
+        
+        {/* Loading State untuk gambar */}
+        
+        
+        {/* Close Button */}
+        <motion.button
+          onClick={() => setIsImageModalOpen(false)}
+          className="absolute top-4 right-4 w-10 h-10 bg-black/70 text-white rounded-full flex items-center justify-center hover:bg-black/90 transition-colors z-10"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          ✕
+        </motion.button>
+        
+        {/* Navigation */}
+        {project.screenshots.length > 1 && (
+          <>
+            <motion.button
+              onClick={() => setSelectedImage(selectedImage > 0 ? selectedImage - 1 : project.screenshots.length - 1)}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/70 text-white rounded-full flex items-center justify-center hover:bg-black/90 transition-colors z-10"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
-                <motion.div
-                className="relative max-w-4xl w-full aspect-video bg-gradient-to-br from-purple-800/30 to-indigo-900/30 rounded-2xl overflow-hidden"
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.8, opacity: 0 }}
-                onClick={(e) => e.stopPropagation()}
-                >
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <motion.div
-                    className="text-9xl opacity-30"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    >
-                    📱
-                    </motion.div>
-                </div>
-                
-                {/* Close Button */}
-                <motion.button
-                    onClick={() => setIsImageModalOpen(false)}
-                    className="absolute top-4 right-4 w-10 h-10 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-black/70 transition-colors"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                >
-                    ✕
-                </motion.button>
-                
-                {/* Navigation */}
-                {project.screenshots.length > 1 && (
-                    <>
-                    <motion.button
-                        onClick={() => setSelectedImage(selectedImage > 0 ? selectedImage - 1 : project.screenshots.length - 1)}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-black/70 transition-colors"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                    >
-                        ←
-                    </motion.button>
-                    
-                    <motion.button
-                        onClick={() => setSelectedImage(selectedImage < project.screenshots.length - 1 ? selectedImage + 1 : 0)}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-black/70 transition-colors"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                    >
-                        →
-                    </motion.button>
-                    </>
-                )}
-                
-                {/* Image Counter */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
-                    {selectedImage + 1} / {project.screenshots.length}
-                </div>
-                </motion.div>
-            </motion.div>
-            )}
-        </AnimatePresence>
+              ←
+            </motion.button>
+            
+            <motion.button
+              onClick={() => setSelectedImage(selectedImage < project.screenshots.length - 1 ? selectedImage + 1 : 0)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/70 text-white rounded-full flex items-center justify-center hover:bg-black/90 transition-colors z-10"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              →
+            </motion.button>
+          </>
+        )}
+        
+        {/* Image Counter */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-2 rounded-full text-sm z-10">
+          {selectedImage + 1} / {project.screenshots.length}
+        </div>
+        
+        {/* Image Title */}
+        <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded-lg text-sm z-10">
+          {project.title}
+        </div>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
         </div>
     );
     };
