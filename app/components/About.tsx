@@ -167,7 +167,7 @@ export default function About() {
         }
       `}</style>
       
-      <section ref={aboutRef} id="about" className="relative min-h-screen py-10 sm:py-16 lg:py-20 overflow-hidden">
+      <section ref={aboutRef} id="about" className="relative min-h-screen py-10 sm:py-16 lg:py-20 ">
         {/* Subtle background - matching Hero style */}
         <div className="absolute inset-0">
           {/* Reduced opacity background elements */}
@@ -214,7 +214,7 @@ export default function About() {
                   <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-300">
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5"></div>
                     <Image
-                      src="/foto.png"
+                      src="/foto.jpg"
                       alt="Fadli Nofrizal"
                       fill
                       className="rounded-full object-cover object-top scale-100 "

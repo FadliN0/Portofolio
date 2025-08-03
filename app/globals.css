@@ -4,8 +4,8 @@
 
 :root {
   /* Dark Theme Colors */
-  --background-primary: #0a0a0f;
-  --background-secondary: #121218;
+  --background-primary: #15101e;
+  --background-secondary: #59595f;
   --background-tertiary: #1a1a24;
   
   /* Purple Accent Colors */
@@ -61,7 +61,7 @@ body {
 }
 
 body {
-  background: var(--gradient-hero);
+  background: var(--background-primary);
   min-height: 100vh;
   line-height: 1.6;
 }

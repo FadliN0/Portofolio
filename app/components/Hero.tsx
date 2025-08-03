@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import FuzzyText from './FuzzyText';
 
 // Dynamic import Lanyard untuk avoid SSR issues
-const Lanyard = dynamic(() => import('./Lanyard'), {
+const Lanyard = dynamic(() => import('./Lanyard/Lanyard'), {
   ssr: false,
   loading: () => (
     <div className="w-full h-96 bg-gradient-to-br from-gray-100/10 to-gray-200/10 animate-pulse rounded-xl flex items-center justify-center border border-white/10 backdrop-blur-sm">
@@ -135,7 +135,7 @@ export default function Hero() {
                 </div>
               }>
                 <Lanyard 
-                  position={[0, 0, 30]} 
+                  position={[0, 0, 15]} 
                   gravity={[0, -40, 0]} 
                   transparent={true}
                   fov={20}

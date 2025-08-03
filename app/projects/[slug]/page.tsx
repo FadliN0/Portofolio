@@ -1,6 +1,6 @@
     // pages/projects/[slug].tsx atau app/projects/[slug]/page.tsx
     'use client';
-
+    import Image from 'next/image'
     import React, { useState } from 'react';
     import { motion, AnimatePresence } from 'framer-motion';
     // import { useRouter } from 'next/router'; // untuk pages router
@@ -598,8 +598,6 @@
             </div>
         </div>
 
-        {/* Image Modal */}
-        // Image Modal - Bagian yang perlu diperbaiki
 <AnimatePresence>
   {isImageModalOpen && (
     <motion.div
@@ -617,16 +615,18 @@
         onClick={(e) => e.stopPropagation()}
       >
         {/* Gambar Asli */}
-        <img
-          src={project.screenshots[selectedImage]}
-          alt={`${project.title} screenshot ${selectedImage + 1}`}
-          className="w-full h-full object-contain"
-          style={{ maxHeight: '80vh' }}
+        <Image
+        src={project.screenshots[selectedImage]}
+        alt={`${project.title} screenshot ${selectedImage + 1}`}
+        width={800} // Sesuaikan dengan kebutuhan
+        height={600} // Sesuaikan dengan kebutuhan
+        className="w-full h-full object-contain"
+        style={{ maxHeight: '80vh' }}
+        priority={selectedImage === 0} // Load prioritas untuk gambar pertama
+        placeholder="blur" // Optional: blur placeholder
+        blurDataURL="data:image/jpeg;base64,/9j..." // Optional: base64 blur
         />
-        
-        {/* Loading State untuk gambar */}
-        
-        
+
         {/* Close Button */}
         <motion.button
           onClick={() => setIsImageModalOpen(false)}

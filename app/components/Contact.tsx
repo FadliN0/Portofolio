@@ -323,7 +323,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="min-h-screen bg-black text-white relative overflow-hidden">
+    <section id="contact" className="min-h-screen relative ">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         {/* Large floating orbs */}

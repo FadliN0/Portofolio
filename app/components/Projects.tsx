@@ -287,7 +287,7 @@ const Projects: React.FC = () => {
   const router = useRouter();
 
   return (
-    <section id="projects" className="py-20 px-6 bg-black min-h-screen relative overflow-hidden">
+    <section id="projects" className="py-20 px-6 min-h-screen relative ">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <motion.div

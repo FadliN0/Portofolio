@@ -243,7 +243,7 @@ const Skills: React.FC = () => {
   }
 
   return (
-    <section className="min-h-screen bg-black text-white relative overflow-hidden">
+    <section className="min-h-screen relative ">
       {/* Enhanced Animated Background */}
       <div className="absolute inset-0">
         {/* Large floating orbs with improved animation */}

@@ -1,7 +1,7 @@
 import './globals.css';
 import { ReactNode } from 'react';
 import { Inter } from 'next/font/google';
-import type { Metadata, Viewport } from 'next';
+import type { Metadata } from 'next';
 
 // Load font dengan optimasi Next.js
 const inter = Inter({ 
@@ -22,13 +22,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Viewport terpisah sesuai Next.js 14+
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  themeColor: '#000000',
-};
-
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
@@ -40,7 +33,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className={`${inter.className} antialiased`}>
         {/* Background base yang konsisten */}
-        <div className="min-h-screen bg-black text-white">
+        <div className="min-h-screen bg-[var(--background-primary)] text-white">
           {children}
         </div>
       </body>
